@@ -1,0 +1,2618 @@
+{
+  "Types": [
+    {
+      "name": "Update",
+      "desc": "This object represents an incoming update.Only one of the optional parameters can be present in any given update.",
+      "fields": [
+        {
+          "field": "update_id",
+          "type": "Integer",
+          "desc": "The update‘s unique identifier. Update identifiers start from a certain positive number and increase sequentially. This ID becomes especially handy if you’re using Webhooks, since it allows you to ignore repeated updates or to restore the correct update sequence, should they get out of order."
+        },
+        {
+          "field": "message",
+          "type": "Message",
+          "desc": "Optional. New incoming message of any kind — text, photo, sticker, etc."
+        },
+        {
+          "field": "edited_message",
+          "type": "Message",
+          "desc": "Optional. New version of a message that is known to the bot and was edited"
+        },
+        {
+          "field": "inline_query",
+          "type": "InlineQuery",
+          "desc": "Optional. New incoming inline query"
+        },
+        {
+          "field": "chosen_inline_result",
+          "type": "ChosenInlineResult",
+          "desc": "Optional. The result of an inline query that was chosen by a user and sent to their chat partner."
+        },
+        {
+          "field": "callback_query",
+          "type": "CallbackQuery",
+          "desc": "Optional. New incoming callback query"
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "desc": "This object represents a Telegram user or bot.",
+      "fields": [
+        {
+          "field": "id",
+          "type": "Integer",
+          "desc": "Unique identifier for this user or bot"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "desc": "User‘s or bot’s first name"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "desc": "Optional. User‘s or bot’s last name"
+        },
+        {
+          "field": "username",
+          "type": "String",
+          "desc": "Optional. User‘s or bot’s username"
+        }
+      ]
+    },
+    {
+      "name": "Chat",
+      "desc": "This object represents a chat.",
+      "fields": [
+        {
+          "field": "id",
+          "type": "Integer",
+          "desc": "Unique identifier for this chat, not exceeding 1e13 by absolute value"
+        },
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of chat, can be either “private”, “group”, “supergroup” or “channel”"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title, for channels and group chats"
+        },
+        {
+          "field": "username",
+          "type": "String",
+          "desc": "Optional. Username, for private chats, supergroups and channels if available"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "desc": "Optional. First name of the other party in a private chat"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "desc": "Optional. Last name of the other party in a private chat"
+        }
+      ]
+    },
+    {
+      "name": "Message",
+      "desc": "This object represents a message.",
+      "fields": [
+        {
+          "field": "message_id",
+          "type": "Integer",
+          "desc": "Unique message identifier"
+        },
+        {
+          "field": "from",
+          "type": "User",
+          "desc": "Optional. Sender, can be empty for messages sent to channels"
+        },
+        {
+          "field": "date",
+          "type": "Integer",
+          "desc": "Date the message was sent in Unix time"
+        },
+        {
+          "field": "chat",
+          "type": "Chat",
+          "desc": "Conversation the message belongs to"
+        },
+        {
+          "field": "forward_from",
+          "type": "User",
+          "desc": "Optional. For forwarded messages, sender of the original message"
+        },
+        {
+          "field": "forward_from_chat",
+          "type": "Chat",
+          "desc": "Optional. For messages forwarded from a channel, information about the original channel"
+        },
+        {
+          "field": "forward_date",
+          "type": "Integer",
+          "desc": "Optional. For forwarded messages, date the original message was sent in Unix time"
+        },
+        {
+          "field": "reply_to_message",
+          "type": "Message",
+          "desc": "Optional. For replies, the original message. Note that the Message object in this field will not contain further reply_to_message fields even if it itself is a reply."
+        },
+        {
+          "field": "edit_date",
+          "type": "Integer",
+          "desc": "Optional. Date the message was last edited in Unix time"
+        },
+        {
+          "field": "text",
+          "type": "String",
+          "desc": "Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters."
+        },
+        {
+          "field": "entities",
+          "type": "Array of MessageEntity",
+          "desc": "Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text"
+        },
+        {
+          "field": "audio",
+          "type": "Audio",
+          "desc": "Optional. Message is an audio file, information about the file"
+        },
+        {
+          "field": "document",
+          "type": "Document",
+          "desc": "Optional. Message is a general file, information about the file"
+        },
+        {
+          "field": "photo",
+          "type": "Array of PhotoSize",
+          "desc": "Optional. Message is a photo, available sizes of the photo"
+        },
+        {
+          "field": "sticker",
+          "type": "Sticker",
+          "desc": "Optional. Message is a sticker, information about the sticker"
+        },
+        {
+          "field": "video",
+          "type": "Video",
+          "desc": "Optional. Message is a video, information about the video"
+        },
+        {
+          "field": "voice",
+          "type": "Voice",
+          "desc": "Optional. Message is a voice message, information about the file"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption for the document, photo or video, 0-200 characters"
+        },
+        {
+          "field": "contact",
+          "type": "Contact",
+          "desc": "Optional. Message is a shared contact, information about the contact"
+        },
+        {
+          "field": "location",
+          "type": "Location",
+          "desc": "Optional. Message is a shared location, information about the location"
+        },
+        {
+          "field": "venue",
+          "type": "Venue",
+          "desc": "Optional. Message is a venue, information about the venue"
+        },
+        {
+          "field": "new_chat_member",
+          "type": "User",
+          "desc": "Optional. A new member was added to the group, information about them (this member may be the bot itself)"
+        },
+        {
+          "field": "left_chat_member",
+          "type": "User",
+          "desc": "Optional. A member was removed from the group, information about them (this member may be the bot itself)"
+        },
+        {
+          "field": "new_chat_title",
+          "type": "String",
+          "desc": "Optional. A chat title was changed to this value"
+        },
+        {
+          "field": "new_chat_photo",
+          "type": "Array of PhotoSize",
+          "desc": "Optional. A chat photo was change to this value"
+        },
+        {
+          "field": "delete_chat_photo",
+          "type": "True",
+          "desc": "Optional. Service message: the chat photo was deleted"
+        },
+        {
+          "field": "group_chat_created",
+          "type": "True",
+          "desc": "Optional. Service message: the group has been created"
+        },
+        {
+          "field": "supergroup_chat_created",
+          "type": "True",
+          "desc": "Optional. Service message: the supergroup has been created"
+        },
+        {
+          "field": "channel_chat_created",
+          "type": "True",
+          "desc": "Optional. Service message: the channel has been created"
+        },
+        {
+          "field": "migrate_to_chat_id",
+          "type": "Integer",
+          "desc": "Optional. The group has been migrated to a supergroup with the specified identifier, not exceeding 1e13 by absolute value"
+        },
+        {
+          "field": "migrate_from_chat_id",
+          "type": "Integer",
+          "desc": "Optional. The supergroup has been migrated from a group with the specified identifier, not exceeding 1e13 by absolute value"
+        },
+        {
+          "field": "pinned_message",
+          "type": "Message",
+          "desc": "Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply."
+        }
+      ]
+    },
+    {
+      "name": "MessageEntity",
+      "desc": "This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc. ",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the entity. Can be mention (@username), hashtag, bot_command, url, email, bold (bold text), italic (italic text), code (monowidth string), pre (monowidth block), text_link (for clickable text URLs), text_mention (for users without usernames)"
+        },
+        {
+          "field": "offset",
+          "type": "Integer",
+          "desc": "Offset in UTF-16 code units to the start of the entity"
+        },
+        {
+          "field": "length",
+          "type": "Integer",
+          "desc": "Length of the entity in UTF-16 code units"
+        },
+        {
+          "field": "url",
+          "type": "String",
+          "desc": "Optional. For “text_link” only, url that will be opened after user taps on the text"
+        },
+        {
+          "field": "user",
+          "type": "User",
+          "desc": "Optional. For “text_mention” only, the mentioned user"
+        }
+      ]
+    },
+    {
+      "name": "PhotoSize",
+      "desc": "This object represents one size of a photo or a file / sticker thumbnail.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique identifier for this file"
+        },
+        {
+          "field": "width",
+          "type": "Integer",
+          "desc": "Photo width"
+        },
+        {
+          "field": "height",
+          "type": "Integer",
+          "desc": "Photo height"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Audio",
+      "desc": "This object represents an audio file to be treated as music by the Telegram clients.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique identifier for this file"
+        },
+        {
+          "field": "duration",
+          "type": "Integer",
+          "desc": "Duration of the audio in seconds as defined by sender"
+        },
+        {
+          "field": "performer",
+          "type": "String",
+          "desc": "Optional. Performer of the audio as defined by sender or by audio tags"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title of the audio as defined by sender or by audio tags"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Optional. MIME type of the file as defined by sender"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Document",
+      "desc": "This object represents a general file (as opposed to photos, voice messages and audio files).",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique file identifier"
+        },
+        {
+          "field": "thumb",
+          "type": "PhotoSize",
+          "desc": "Optional. Document thumbnail as defined by sender"
+        },
+        {
+          "field": "file_name",
+          "type": "String",
+          "desc": "Optional. Original filename as defined by sender"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Optional. MIME type of the file as defined by sender"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Sticker",
+      "desc": "This object represents a sticker.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique identifier for this file"
+        },
+        {
+          "field": "width",
+          "type": "Integer",
+          "desc": "Sticker width"
+        },
+        {
+          "field": "height",
+          "type": "Integer",
+          "desc": "Sticker height"
+        },
+        {
+          "field": "thumb",
+          "type": "PhotoSize",
+          "desc": "Optional. Sticker thumbnail in .webp or .jpg format"
+        },
+        {
+          "field": "emoji",
+          "type": "String",
+          "desc": "Optional. Emoji associated with the sticker"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Video",
+      "desc": "This object represents a video file.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique identifier for this file"
+        },
+        {
+          "field": "width",
+          "type": "Integer",
+          "desc": "Video width as defined by sender"
+        },
+        {
+          "field": "height",
+          "type": "Integer",
+          "desc": "Video height as defined by sender"
+        },
+        {
+          "field": "duration",
+          "type": "Integer",
+          "desc": "Duration of the video in seconds as defined by sender"
+        },
+        {
+          "field": "thumb",
+          "type": "PhotoSize",
+          "desc": "Optional. Video thumbnail"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Optional. Mime type of a file as defined by sender"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Voice",
+      "desc": "This object represents a voice note.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "desc": "Unique identifier for this file"
+        },
+        {
+          "field": "duration",
+          "type": "Integer",
+          "desc": "Duration of the audio in seconds as defined by sender"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Optional. MIME type of the file as defined by sender"
+        },
+        {
+          "field": "file_size",
+          "type": "Integer",
+          "desc": "Optional. File size"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "desc": "This object represents a phone contact.",
+      "fields": [
+        {
+          "field": "phone_number",
+          "type": "String",
+          "desc": "Contact's phone number"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "desc": "Contact's first name"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "desc": "Optional. Contact's last name"
+        },
+        {
+          "field": "user_id",
+          "type": "Integer",
+          "desc": "Optional. Contact's user identifier in Telegram"
+        }
+      ]
+    },
+    {
+      "name": "Location",
+      "desc": "This object represents a point on the map.",
+      "fields": [
+        {
+          "field": "longitude",
+          "type": "Float",
+          "desc": "Longitude as defined by sender"
+        },
+        {
+          "field": "latitude",
+          "type": "Float",
+          "desc": "Latitude as defined by sender"
+        }
+      ]
+    },
+    {
+      "name": "Venue",
+      "desc": "This object represents a venue.",
+      "fields": [
+        {
+          "field": "location",
+          "type": "Location",
+          "desc": "Venue location"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Name of the venue"
+        },
+        {
+          "field": "address",
+          "type": "String",
+          "desc": "Address of the venue"
+        },
+        {
+          "field": "foursquare_id",
+          "type": "String",
+          "desc": "Optional. Foursquare identifier of the venue"
+        }
+      ]
+    },
+    {
+      "name": "UserProfilePhotos",
+      "desc": "This object represent a user's profile pictures.",
+      "fields": [
+        {
+          "field": "total_count",
+          "type": "Integer",
+          "desc": "Total number of profile pictures the target user has"
+        },
+        {
+          "field": "photos",
+          "type": "Array of Array of PhotoSize",
+          "desc": "Requested profile pictures (in up to 4 sizes each)"
+        }
+      ]
+    },
+    {
+      "name": "ReplyKeyboardMarkup",
+      "desc": "This object represents a custom keyboard with reply options (see Introduction to bots for details and examples).",
+      "fields": [
+        {
+          "field": "keyboard",
+          "type": "Array of Array of KeyboardButton",
+          "desc": "Array of button rows, each represented by an Array of KeyboardButton objects"
+        },
+        {
+          "field": "resize_keyboard",
+          "type": "Boolean",
+          "desc": "Optional. Requests clients to resize the keyboard vertically for optimal fit (e.g., make the keyboard smaller if there are just two rows of buttons). Defaults to false, in which case the custom keyboard is always of the same height as the app's standard keyboard."
+        },
+        {
+          "field": "one_time_keyboard",
+          "type": "Boolean",
+          "desc": "Optional. Requests clients to hide the keyboard as soon as it's been used. The keyboard will still be available, but clients will automatically display the usual letter-keyboard in the chat – the user can press a special button in the input field to see the custom keyboard again. Defaults to false."
+        },
+        {
+          "field": "selective",
+          "type": "Boolean",
+          "desc": "Optional. Use this parameter if you want to show the keyboard to specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user requests to change the bot‘s language, bot replies to the request with a keyboard to select the new language. Other users in the group don’t see the keyboard."
+        }
+      ]
+    },
+    {
+      "name": "KeyboardButton",
+      "desc": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields are mutually exclusive.",
+      "fields": [
+        {
+          "field": "text",
+          "type": "String",
+          "desc": "Text of the button. If none of the optional fields are used, it will be sent to the bot as a message when the button is pressed"
+        },
+        {
+          "field": "request_contact",
+          "type": "Boolean",
+          "desc": "Optional. If True, the user's phone number will be sent as a contact when the button is pressed. Available in private chats only"
+        },
+        {
+          "field": "request_location",
+          "type": "Boolean",
+          "desc": "Optional. If True, the user's current location will be sent when the button is pressed. Available in private chats only"
+        }
+      ]
+    },
+    {
+      "name": "ReplyKeyboardHide",
+      "desc": "Upon receiving a message with this object, Telegram clients will hide the current custom keyboard and display the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot. An exception is made for one-time keyboards that are hidden immediately after the user presses a button (see ReplyKeyboardMarkup).",
+      "fields": [
+        {
+          "field": "hide_keyboard",
+          "type": "True",
+          "desc": "Requests clients to hide the custom keyboard"
+        },
+        {
+          "field": "selective",
+          "type": "Boolean",
+          "desc": "Optional. Use this parameter if you want to hide keyboard for specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.Example: A user votes in a poll, bot returns confirmation message in reply to the vote and hides keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet."
+        }
+      ]
+    },
+    {
+      "name": "InlineKeyboardButton",
+      "desc": "This object represents one button of an inline keyboard. You must use exactly one of the optional fields.",
+      "fields": [
+        {
+          "field": "text",
+          "type": "String",
+          "desc": "Label text on the button"
+        },
+        {
+          "field": "url",
+          "type": "String",
+          "desc": "Optional. HTTP url to be opened when button is pressed"
+        },
+        {
+          "field": "callback_data",
+          "type": "String",
+          "desc": "Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes"
+        },
+        {
+          "field": "switch_inline_query",
+          "type": "String",
+          "desc": "Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot‘s username and the specified inline query in the input field. Can be empty, in which case just the bot’s username will be inserted.Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen."
+        }
+      ]
+    },
+    {
+      "name": "CallbackQuery",
+      "desc": "This object represents an incoming callback query from a callback button in an inline keyboard. If the button that originated the query was attached to a message sent by the bot, the field message will be presented. If the button was attached to a message sent via the bot (in inline mode), the field inline_message_id will be presented.",
+      "fields": [
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this query"
+        },
+        {
+          "field": "from",
+          "type": "User",
+          "desc": "Sender"
+        },
+        {
+          "field": "message",
+          "type": "Message",
+          "desc": "Optional. Message with the callback button that originated the query. Note that message content and message date will not be available if the message is too old"
+        },
+        {
+          "field": "inline_message_id",
+          "type": "String",
+          "desc": "Optional. Identifier of the message sent via the bot in inline mode, that originated the query"
+        },
+        {
+          "field": "data",
+          "type": "String",
+          "desc": "Data associated with the callback button. Be aware that a bad client can send arbitrary data in this field"
+        }
+      ]
+    },
+    {
+      "name": "ForceReply",
+      "desc": "Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if the user has selected the bot‘s message and tapped ’Reply'). This can be extremely useful if you want to create user-friendly step-by-step interfaces without having to sacrifice privacy mode.",
+      "fields": [
+        {
+          "field": "force_reply",
+          "type": "True",
+          "desc": "Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'"
+        },
+        {
+          "field": "selective",
+          "type": "Boolean",
+          "desc": "Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message."
+        }
+      ]
+    },
+    {
+      "name": "ChatMember",
+      "desc": "This object contains information about one member of the chat.",
+      "fields": [
+        {
+          "field": "user",
+          "type": "User",
+          "desc": "Information about the user"
+        },
+        {
+          "field": "status",
+          "type": "String",
+          "desc": "The member's status in the chat. Can be “creator”, “administrator”, “member”, “left” or “kicked”"
+        }
+      ]
+    },
+    {
+      "name": "InlineQuery",
+      "desc": "This object represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.",
+      "fields": [
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this query"
+        },
+        {
+          "field": "from",
+          "type": "User",
+          "desc": "Sender"
+        },
+        {
+          "field": "location",
+          "type": "Location",
+          "desc": "Optional. Sender location, only for bots that request user location"
+        },
+        {
+          "field": "query",
+          "type": "String",
+          "desc": "Text of the query (up to 512 characters)"
+        },
+        {
+          "field": "offset",
+          "type": "String",
+          "desc": "Offset of the results to be returned, can be controlled by the bot"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultArticle",
+      "desc": "Represents a link to an article or web page.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be article"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 Bytes"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title of the result"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Content of the message to be sent"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "url",
+          "type": "String",
+          "desc": "Optional. URL of the result"
+        },
+        {
+          "field": "hide_url",
+          "type": "Boolean",
+          "desc": "Optional. Pass True, if you don't want the URL to be shown in the message"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "Optional. Url of the thumbnail for the result"
+        },
+        {
+          "field": "thumb_width",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail width"
+        },
+        {
+          "field": "thumb_height",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail height"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultPhoto",
+      "desc": "Represents a link to a photo. By default, this photo will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be photo"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "photo_url",
+          "type": "String",
+          "desc": "A valid URL of the photo. Photo must be in jpeg format. Photo size must not exceed 5MB"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "URL of the thumbnail for the photo"
+        },
+        {
+          "field": "photo_width",
+          "type": "Integer",
+          "desc": "Optional. Width of the photo"
+        },
+        {
+          "field": "photo_height",
+          "type": "Integer",
+          "desc": "Optional. Height of the photo"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the photo to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the photo"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultGif",
+      "desc": "Represents a link to an animated GIF file. By default, this animated GIF file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be gif"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "gif_url",
+          "type": "String",
+          "desc": "A valid URL for the GIF file. File size must not exceed 1MB"
+        },
+        {
+          "field": "gif_width",
+          "type": "Integer",
+          "desc": "Optional. Width of the GIF"
+        },
+        {
+          "field": "gif_height",
+          "type": "Integer",
+          "desc": "Optional. Height of the GIF"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "URL of the static thumbnail for the result (jpeg or gif)"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the GIF file to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "inputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the GIF animation"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultMpeg4Gif",
+      "desc": "Represents a link to a video animation (H.264/MPEG-4 AVC video without sound). By default, this animated MPEG-4 file will be sent by the user with optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be mpeg4_gif"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "mpeg4_url",
+          "type": "String",
+          "desc": "A valid URL for the MP4 file. File size must not exceed 1MB"
+        },
+        {
+          "field": "mpeg4_width",
+          "type": "Integer",
+          "desc": "Optional. Video width"
+        },
+        {
+          "field": "mpeg4_height",
+          "type": "Integer",
+          "desc": "Optional. Video height"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "URL of the static thumbnail (jpeg or gif) for the result"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the MPEG-4 file to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the video animation"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultVideo",
+      "desc": "Represents a link to a page containing an embedded video player or a video file. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be video"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "video_url",
+          "type": "String",
+          "desc": "A valid URL for the embedded video player or video file"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Mime type of the content of video url, “text/html” or “video/mp4”"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "URL of the thumbnail (jpeg only) for the video"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the video to be sent, 0-200 characters"
+        },
+        {
+          "field": "video_width",
+          "type": "Integer",
+          "desc": "Optional. Video width"
+        },
+        {
+          "field": "video_height",
+          "type": "Integer",
+          "desc": "Optional. Video height"
+        },
+        {
+          "field": "video_duration",
+          "type": "Integer",
+          "desc": "Optional. Video duration in seconds"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the video"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultAudio",
+      "desc": "Represents a link to an mp3 audio file. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be audio"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "audio_url",
+          "type": "String",
+          "desc": "A valid URL for the audio file"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title"
+        },
+        {
+          "field": "performer",
+          "type": "String",
+          "desc": "Optional. Performer"
+        },
+        {
+          "field": "audio_duration",
+          "type": "Integer",
+          "desc": "Optional. Audio duration in seconds"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the audio"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultVoice",
+      "desc": "Represents a link to a voice recording in an .ogg container encoded with OPUS. By default, this voice recording will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the the voice message.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be voice"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "voice_url",
+          "type": "String",
+          "desc": "A valid URL for the voice recording"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Recording title"
+        },
+        {
+          "field": "voice_duration",
+          "type": "Integer",
+          "desc": "Optional. Recording duration in seconds"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the voice recording"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultDocument",
+      "desc": "Represents a link to a file. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only .PDF and .ZIP files can be sent using this method.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be document"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the document to be sent, 0-200 characters"
+        },
+        {
+          "field": "document_url",
+          "type": "String",
+          "desc": "A valid URL for the file"
+        },
+        {
+          "field": "mime_type",
+          "type": "String",
+          "desc": "Mime type of the content of the file, either “application/pdf” or “application/zip”"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the file"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "Optional. URL of the thumbnail (jpeg only) for the file"
+        },
+        {
+          "field": "thumb_width",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail width"
+        },
+        {
+          "field": "thumb_height",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail height"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultLocation",
+      "desc": "Represents a location on a map. By default, the location will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the location.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be location"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 Bytes"
+        },
+        {
+          "field": "latitude",
+          "type": "Float number",
+          "desc": "Location latitude in degrees"
+        },
+        {
+          "field": "longitude",
+          "type": "Float number",
+          "desc": "Location longitude in degrees"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Location title"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the location"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "Optional. Url of the thumbnail for the result"
+        },
+        {
+          "field": "thumb_width",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail width"
+        },
+        {
+          "field": "thumb_height",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail height"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultVenue",
+      "desc": "Represents a venue. By default, the venue will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the venue.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be venue"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 Bytes"
+        },
+        {
+          "field": "latitude",
+          "type": "Float",
+          "desc": "Latitude of the venue location in degrees"
+        },
+        {
+          "field": "longitude",
+          "type": "Float",
+          "desc": "Longitude of the venue location in degrees"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title of the venue"
+        },
+        {
+          "field": "address",
+          "type": "String",
+          "desc": "Address of the venue"
+        },
+        {
+          "field": "foursquare_id",
+          "type": "String",
+          "desc": "Optional. Foursquare identifier of the venue if known"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the venue"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "Optional. Url of the thumbnail for the result"
+        },
+        {
+          "field": "thumb_width",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail width"
+        },
+        {
+          "field": "thumb_height",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail height"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultContact",
+      "desc": "Represents a contact with a phone number. By default, this contact will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the contact.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be contact"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 Bytes"
+        },
+        {
+          "field": "phone_number",
+          "type": "String",
+          "desc": "Contact's phone number"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "desc": "Contact's first name"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "desc": "Optional. Contact's last name"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the contact"
+        },
+        {
+          "field": "thumb_url",
+          "type": "String",
+          "desc": "Optional. Url of the thumbnail for the result"
+        },
+        {
+          "field": "thumb_width",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail width"
+        },
+        {
+          "field": "thumb_height",
+          "type": "Integer",
+          "desc": "Optional. Thumbnail height"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedPhoto",
+      "desc": "Represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be photo"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "photo_file_id",
+          "type": "String",
+          "desc": "A valid file identifier of the photo"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the photo to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the photo"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedGif",
+      "desc": "Represents a link to an animated GIF file stored on the Telegram servers. By default, this animated GIF file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with specified content instead of the animation.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be gif"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "gif_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the GIF file"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the GIF file to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the GIF animation"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedMpeg4Gif",
+      "desc": "Represents a link to a video animation (H.264/MPEG-4 AVC video without sound) stored on the Telegram servers. By default, this animated MPEG-4 file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the animation.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be mpeg4_gif"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "mpeg4_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the MP4 file"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Optional. Title for the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the MPEG-4 file to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the video animation"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedSticker",
+      "desc": "Represents a link to a sticker stored on the Telegram servers. By default, this sticker will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the sticker.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be sticker"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "sticker_file_id",
+          "type": "String",
+          "desc": "A valid file identifier of the sticker"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the sticker"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedDocument",
+      "desc": "Represents a link to a file stored on the Telegram servers. By default, this file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the file. Currently, only pdf-files and zip archives can be sent using this method.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be document"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title for the result"
+        },
+        {
+          "field": "document_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the file"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the document to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the file"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedVideo",
+      "desc": "Represents a link to a video file stored on the Telegram servers. By default, this video file will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the video.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be video"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "video_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the video file"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Title for the result"
+        },
+        {
+          "field": "description",
+          "type": "String",
+          "desc": "Optional. Short description of the result"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "desc": "Optional. Caption of the video to be sent, 0-200 characters"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the video"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedVoice",
+      "desc": "Represents a link to a voice message stored on the Telegram servers. By default, this voice message will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the voice message.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be voice"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "voice_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the voice message"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Voice message title"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the voice message"
+        }
+      ]
+    },
+    {
+      "name": "InlineQueryResultCachedAudio",
+      "desc": "Represents a link to an mp3 audio file stored on the Telegram servers. By default, this audio file will be sent by the user. Alternatively, you can use input_message_content to send a message with the specified content instead of the audio.",
+      "fields": [
+        {
+          "field": "type",
+          "type": "String",
+          "desc": "Type of the result, must be audio"
+        },
+        {
+          "field": "id",
+          "type": "String",
+          "desc": "Unique identifier for this result, 1-64 bytes"
+        },
+        {
+          "field": "audio_file_id",
+          "type": "String",
+          "desc": "A valid file identifier for the audio file"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "desc": "Optional. An Inline keyboard attached to the message"
+        },
+        {
+          "field": "input_message_content",
+          "type": "InputMessageContent",
+          "desc": "Optional. Content of the message to be sent instead of the audio"
+        }
+      ]
+    },
+    {
+      "name": "InputTextMessageContent",
+      "desc": "Represents the content of a text message to be sent as the result of an inline query. ",
+      "fields": [
+        {
+          "field": "message_text",
+          "type": "String",
+          "desc": "Text of the message to be sent, 1-4096 characters"
+        },
+        {
+          "field": "parse_mode",
+          "type": "String",
+          "desc": "Optional. Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message."
+        },
+        {
+          "field": "disable_web_page_preview",
+          "type": "Boolean",
+          "desc": "Optional. Disables link previews for links in the sent message"
+        }
+      ]
+    },
+    {
+      "name": "InputLocationMessageContent",
+      "desc": "Represents the content of a location message to be sent as the result of an inline query. ",
+      "fields": [
+        {
+          "field": "latitude",
+          "type": "Float",
+          "desc": "Latitude of the location in degrees"
+        },
+        {
+          "field": "longitude",
+          "type": "Float",
+          "desc": "Longitude of the location in degrees"
+        }
+      ]
+    },
+    {
+      "name": "InputVenueMessageContent",
+      "desc": "Represents the content of a venue message to be sent as the result of an inline query. ",
+      "fields": [
+        {
+          "field": "latitude",
+          "type": "Float",
+          "desc": "Latitude of the venue in degrees"
+        },
+        {
+          "field": "longitude",
+          "type": "Float",
+          "desc": "Longitude of the venue in degrees"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "desc": "Name of the venue"
+        },
+        {
+          "field": "address",
+          "type": "String",
+          "desc": "Address of the venue"
+        },
+        {
+          "field": "foursquare_id",
+          "type": "String",
+          "desc": "Optional. Foursquare identifier of the venue, if known"
+        }
+      ]
+    },
+    {
+      "name": "InputContactMessageContent",
+      "desc": "Represents the content of a contact message to be sent as the result of an inline query. ",
+      "fields": [
+        {
+          "field": "phone_number",
+          "type": "String",
+          "desc": "Contact's phone number"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "desc": "Contact's first name"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "desc": "Optional. Contact's last name"
+        }
+      ]
+    },
+    {
+      "name": "ChosenInlineResult",
+      "desc": "Represents a result of an inline query that was chosen by the user and sent to their chat partner. ",
+      "fields": [
+        {
+          "field": "result_id",
+          "type": "String",
+          "desc": "The unique identifier for the result that was chosen"
+        },
+        {
+          "field": "from",
+          "type": "User",
+          "desc": "The user that chose the result"
+        },
+        {
+          "field": "location",
+          "type": "Location",
+          "desc": "Optional. Sender location, only for bots that require user location"
+        },
+        {
+          "field": "inline_message_id",
+          "type": "String",
+          "desc": "Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message."
+        },
+        {
+          "field": "query",
+          "type": "String",
+          "desc": "The query that was used to obtain the result"
+        }
+      ]
+    }
+  ],
+  "Methods": [
+    {
+      "name": "getUpdates",
+      "desc": "Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.",
+      "fields": [
+        {
+          "field": "offset",
+          "type": "Integer",
+          "required": false,
+          "desc": "Identifier of the first update to be returned. Must be greater by one than the highest among the identifiers of previously received updates. By default, updates starting with the earliest unconfirmed update are returned. An update is considered confirmed as soon as getUpdates is called with an offset higher than its update_id. The negative offset can be specified to retrieve updates starting from -offset update from the end of the updates queue. All previous updates will forgotten."
+        },
+        {
+          "field": "limit",
+          "type": "Integer",
+          "required": false,
+          "desc": "Limits the number of updates to be retrieved. Values between 1—100 are accepted. Defaults to 100."
+        },
+        {
+          "field": "timeout",
+          "type": "Integer",
+          "required": false,
+          "desc": "Timeout in seconds for long polling. Defaults to 0, i.e. usual short polling"
+        }
+      ]
+    },
+    {
+      "name": "sendMessage",
+      "desc": "Use this method to send text messages. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "text",
+          "type": "String",
+          "required": true,
+          "desc": "Text of the message to be sent"
+        },
+        {
+          "field": "parse_mode",
+          "type": "String",
+          "required": false,
+          "desc": "Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message."
+        },
+        {
+          "field": "disable_web_page_preview",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Disables link previews for links in this message"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "forwardMessage",
+      "desc": "Use this method to forward messages of any kind. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "from_chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "message_id",
+          "type": "Integer",
+          "required": true,
+          "desc": "Unique message identifier"
+        }
+      ]
+    },
+    {
+      "name": "sendPhoto",
+      "desc": "Use this method to send photos. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "photo",
+          "type": "InputFile or String",
+          "required": true,
+          "desc": "Photo to send. You can either pass a file_id as String to resend a photo that is already on the Telegram servers, or upload a new photo using multipart/form-data."
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "required": false,
+          "desc": "Photo caption (may also be used when resending photos by file_id), 0-200 characters"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendDocument",
+      "desc": "Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "document",
+          "type": "InputFile or String",
+          "required": true,
+          "desc": "File to send. You can either pass a file_id as String to resend a file that is already on the Telegram servers, or upload a new file using multipart/form-data."
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "required": false,
+          "desc": "Document caption (may also be used when resending documents by file_id), 0-200 characters"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendSticker",
+      "desc": "Use this method to send .webp stickers. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "sticker",
+          "type": "InputFile or String",
+          "required": true,
+          "desc": "Sticker to send. You can either pass a file_id as String to resend a sticker that is already on the Telegram servers, or upload a new sticker using multipart/form-data."
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendVideo",
+      "desc": "Use this method to send video files, Telegram clients support mp4 videos (other formats may be sent as Document). On success, the sent Message is returned. Bots can currently send video files of up to 50 MB in size, this limit may be changed in the future.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "video",
+          "type": "InputFile or String",
+          "required": true,
+          "desc": "Video to send. You can either pass a file_id as String to resend a video that is already on the Telegram servers, or upload a new video file using multipart/form-data."
+        },
+        {
+          "field": "duration",
+          "type": "Integer",
+          "required": false,
+          "desc": "Duration of sent video in seconds"
+        },
+        {
+          "field": "width",
+          "type": "Integer",
+          "required": false,
+          "desc": "Video width"
+        },
+        {
+          "field": "height",
+          "type": "Integer",
+          "required": false,
+          "desc": "Video height"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "required": false,
+          "desc": "Video caption (may also be used when resending videos by file_id), 0-200 characters"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendVoice",
+      "desc": "Use this method to send audio files, if you want Telegram clients to display the file as a playable voice message. For this to work, your audio must be in an .ogg file encoded with OPUS (other formats may be sent as Audio or Document). On success, the sent Message is returned. Bots can currently send voice messages of up to 50 MB in size, this limit may be changed in the future.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "voice",
+          "type": "InputFile or String",
+          "required": true,
+          "desc": "Audio file to send. You can either pass a file_id as String to resend an audio that is already on the Telegram servers, or upload a new audio file using multipart/form-data."
+        },
+        {
+          "field": "duration",
+          "type": "Integer",
+          "required": false,
+          "desc": "Duration of sent audio in seconds"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendLocation",
+      "desc": "Use this method to send point on the map. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "latitude",
+          "type": "Float number",
+          "required": true,
+          "desc": "Latitude of location"
+        },
+        {
+          "field": "longitude",
+          "type": "Float number",
+          "required": true,
+          "desc": "Longitude of location"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendVenue",
+      "desc": "Use this method to send information about a venue. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "latitude",
+          "type": "Float number",
+          "required": true,
+          "desc": "Latitude of the venue"
+        },
+        {
+          "field": "longitude",
+          "type": "Float number",
+          "required": true,
+          "desc": "Longitude of the venue"
+        },
+        {
+          "field": "title",
+          "type": "String",
+          "required": true,
+          "desc": "Name of the venue"
+        },
+        {
+          "field": "address",
+          "type": "String",
+          "required": true,
+          "desc": "Address of the venue"
+        },
+        {
+          "field": "foursquare_id",
+          "type": "String",
+          "required": false,
+          "desc": "Foursquare identifier of the venue"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide reply keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "sendContact",
+      "desc": "Use this method to send phone contacts. On success, the sent Message is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "phone_number",
+          "type": "String",
+          "required": true,
+          "desc": "Contact's phone number"
+        },
+        {
+          "field": "first_name",
+          "type": "String",
+          "required": true,
+          "desc": "Contact's first name"
+        },
+        {
+          "field": "last_name",
+          "type": "String",
+          "required": false,
+          "desc": "Contact's last name"
+        },
+        {
+          "field": "disable_notification",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Sends the message silently. iOS users will not receive a notification, Android users will receive a notification with no sound."
+        },
+        {
+          "field": "reply_to_message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "If the message is a reply, ID of the original message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardHide or ForceReply",
+          "required": false,
+          "desc": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to hide keyboard or to force a reply from the user."
+        }
+      ]
+    },
+    {
+      "name": "getUserProfilePhotos",
+      "desc": "Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.",
+      "fields": [
+        {
+          "field": "user_id",
+          "type": "Integer",
+          "required": true,
+          "desc": "Unique identifier of the target user"
+        },
+        {
+          "field": "offset",
+          "type": "Integer",
+          "required": false,
+          "desc": "Sequential number of the first photo to be returned. By default, all photos are returned."
+        },
+        {
+          "field": "limit",
+          "type": "Integer",
+          "required": false,
+          "desc": "Limits the number of photos to be retrieved. Values between 1—100 are accepted. Defaults to 100."
+        }
+      ]
+    },
+    {
+      "name": "getFile",
+      "desc": "Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot<token>/<file_path>, where <file_path> is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.",
+      "fields": [
+        {
+          "field": "file_id",
+          "type": "String",
+          "required": true,
+          "desc": "File identifier to get info about"
+        }
+      ]
+    },
+    {
+      "name": "leaveChat",
+      "desc": "Use this method for your bot to leave a group, supergroup or channel. Returns True on success.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+        }
+      ]
+    },
+    {
+      "name": "unbanChatMember",
+      "desc": "Use this method to unban a previously kicked user in a supergroup. The user will not return to the group automatically, but will be able to join via link, etc. The bot must be an administrator in the group for this to work. Returns True on success.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target group or username of the target supergroup (in the format @supergroupusername)"
+        },
+        {
+          "field": "user_id",
+          "type": "Integer",
+          "required": true,
+          "desc": "Unique identifier of the target user"
+        }
+      ]
+    },
+    {
+      "name": "getChat",
+      "desc": "Use this method to get up to date information about the chat (current name of the user for one-on-one conversations, current username of a user, group or channel, etc.). Returns a Chat object on success.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+        }
+      ]
+    },
+    {
+      "name": "getChatAdministrators",
+      "desc": "Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+        }
+      ]
+    },
+    {
+      "name": "getChatMembersCount",
+      "desc": "Use this method to get the number of members in a chat. Returns Int on success.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+        }
+      ]
+    },
+    {
+      "name": "getChatMember",
+      "desc": "Use this method to get information about a member of a chat. Returns a ChatMember object on success.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": true,
+          "desc": "Unique identifier for the target chat or username of the target supergroup or channel (in the format @channelusername)"
+        },
+        {
+          "field": "user_id",
+          "type": "Integer",
+          "required": true,
+          "desc": "Unique identifier of the target user"
+        }
+      ]
+    },
+    {
+      "name": "answerCallbackQuery",
+      "desc": "Use this method to send answers to callback queries sent from inline keyboards. The answer will be displayed to the user as a notification at the top of the chat screen or as an alert. On success, True is returned.",
+      "fields": [
+        {
+          "field": "callback_query_id",
+          "type": "String",
+          "required": true,
+          "desc": "Unique identifier for the query to be answered"
+        },
+        {
+          "field": "text",
+          "type": "String",
+          "required": false,
+          "desc": "Text of the notification. If not specified, nothing will be shown to the user"
+        },
+        {
+          "field": "show_alert",
+          "type": "Boolean",
+          "required": false,
+          "desc": "If true, an alert will be shown by the client instead of a notification at the top of the chat screen. Defaults to false."
+        }
+      ]
+    },
+    {
+      "name": "editMessageText",
+      "desc": "Use this method to edit text messages sent by the bot or via the bot (for inline bots). On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier of the sent message"
+        },
+        {
+          "field": "inline_message_id",
+          "type": "String",
+          "required": false,
+          "desc": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+        },
+        {
+          "field": "text",
+          "type": "String",
+          "required": true,
+          "desc": "New text of the message"
+        },
+        {
+          "field": "parse_mode",
+          "type": "String",
+          "required": false,
+          "desc": "Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in your bot's message."
+        },
+        {
+          "field": "disable_web_page_preview",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Disables link previews for links in this message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "required": false,
+          "desc": "A JSON-serialized object for an inline keyboard."
+        }
+      ]
+    },
+    {
+      "name": "editMessageCaption",
+      "desc": "Use this method to edit captions of messages sent by the bot or via the bot (for inline bots). On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier of the sent message"
+        },
+        {
+          "field": "inline_message_id",
+          "type": "String",
+          "required": false,
+          "desc": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+        },
+        {
+          "field": "caption",
+          "type": "String",
+          "required": false,
+          "desc": "New caption of the message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "required": false,
+          "desc": "A JSON-serialized object for an inline keyboard."
+        }
+      ]
+    },
+    {
+      "name": "editMessageReplyMarkup",
+      "desc": "Use this method to edit only the reply markup of messages sent by the bot or via the bot (for inline bots).  On success, if edited message is sent by the bot, the edited Message is returned, otherwise True is returned.",
+      "fields": [
+        {
+          "field": "chat_id",
+          "type": "Integer or String",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier for the target chat or username of the target channel (in the format @channelusername)"
+        },
+        {
+          "field": "message_id",
+          "type": "Integer",
+          "required": false,
+          "desc": "Required if inline_message_id is not specified. Unique identifier of the sent message"
+        },
+        {
+          "field": "inline_message_id",
+          "type": "String",
+          "required": false,
+          "desc": "Required if chat_id and message_id are not specified. Identifier of the inline message"
+        },
+        {
+          "field": "reply_markup",
+          "type": "InlineKeyboardMarkup",
+          "required": false,
+          "desc": "A JSON-serialized object for an inline keyboard."
+        }
+      ]
+    },
+    {
+      "name": "answerInlineQuery",
+      "desc": "Use this method to send answers to an inline query. On success, True is returned.No more than 50 results per query are allowed.",
+      "fields": [
+        {
+          "field": "inline_query_id",
+          "type": "String",
+          "required": true,
+          "desc": "Unique identifier for the answered query"
+        },
+        {
+          "field": "results",
+          "type": "Array of InlineQueryResult",
+          "required": true,
+          "desc": "A JSON-serialized array of results for the inline query"
+        },
+        {
+          "field": "cache_time",
+          "type": "Integer",
+          "required": false,
+          "desc": "The maximum amount of time in seconds that the result of the inline query may be cached on the server. Defaults to 300."
+        },
+        {
+          "field": "is_personal",
+          "type": "Boolean",
+          "required": false,
+          "desc": "Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query"
+        },
+        {
+          "field": "next_offset",
+          "type": "String",
+          "required": false,
+          "desc": "Pass the offset that a client should send in the next query with the same text to receive more results. Pass an empty string if there are no more results or if you don‘t support pagination. Offset length can’t exceed 64 bytes."
+        },
+        {
+          "field": "switch_pm_text",
+          "type": "String",
+          "required": false,
+          "desc": "If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter"
+        },
+        {
+          "field": "switch_pm_parameter",
+          "type": "String",
+          "required": false,
+          "desc": "Parameter for the start message sent to the bot when user presses the switch buttonExample: An inline bot that sends YouTube videos can ask the user to connect the bot to their YouTube account to adapt search results accordingly. To do this, it displays a ‘Connect your YouTube account’ button above the results, or even before showing any. The user presses the button, switches to a private chat with the bot and, in doing so, passes a start parameter that instructs the bot to return an oauth link. Once done, the bot can offer a switch_inline button so that the user can easily return to the chat where they wanted to use the bot's inline capabilities."
+        }
+      ]
+    }
+  ]
+}
