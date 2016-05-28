@@ -24,11 +24,16 @@ $("h4").each(function(i, e) {
             i.field = f[0];
             i.type  = f[1];
             if (type) {
-                i.desc = f[2];
-            } else {
-                i.required = f[2] == "Yes";
-                i.desc	   = f[3];
+                var m = f[2].match(/^Optional. (.*)$/)
+                if (m != null) {
+                    f[3] = m[1]
+                } else {
+                    f[3] = f[2]
+                    f[2] = "Yes"
+                }
             }
+            i.required = f[2] == "Yes";
+            i.desc	   = f[3];
             a.fields.push(i);
         });
         if (type)
