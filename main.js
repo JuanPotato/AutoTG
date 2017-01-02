@@ -18,7 +18,8 @@ function nextag(e, n) {
 $("h4").each(function(i, ee) { var e = $(ee)
     if (nextag(e, 1) == 'P' &&
           (nextag(e, 2) == 'TABLE' ||
-            (nextag(e, 2) == 'BLOCKQUOTE' && nextag(e, 3) == 'TABLE')
+            (nextag(e, 2) == 'BLOCKQUOTE' && nextag(e, 3) == 'TABLE') ||
+            (nextag(e, 2) == 'P' && nextag(e, 3) == 'TABLE')
           )
         ) {
         var type = true;
