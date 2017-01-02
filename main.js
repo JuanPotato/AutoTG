@@ -3,15 +3,32 @@ var bot_api = {
     Methods: []
 };
 
-$("h4").each(function(i, e) {
-    if ($(e).next().prop("tagName") == "P" &&
-        $(e).next().next().prop("tagName") == "TABLE") {
+function next(e, n) {
+    var new_e = e;
+    for (i = 0; i < Math.abs(n); i++) {
+        new_e = new_e.next()
+    }
+    return new_e
+}
+
+function nextag(e, n) {
+    return next(e, n).prop('tagName')
+}
+
+$("h4").each(function(i, ee) { var e = $(ee)
+    if (nextag(e, 1) == 'P' &&
+          (nextag(e, 2) == 'TABLE' ||
+            (nextag(e, 2) == 'BLOCKQUOTE' && nextag(e, 3) == 'TABLE')
+          )
+        ) {
         var type = true;
         var a = {};
-        a.name = $(e).text();
-        a.desc = $(e).next().text();
+        a.name = e.text();
+        a.desc = e.next().text();
         a.fields = [];
-        $(e).next().next().children().children().each(function(i) {
+        var t = e.next().next()
+        if (t.prop('tagName') != 'TABLE') t = t.next()
+        t.children().children().each(function(i) {
             var f = [];
             $(this).children().each(function() {
                 f.push($(this).text());
@@ -33,7 +50,7 @@ $("h4").each(function(i, e) {
                 }
             }
             i.required = f[2] == "Yes";
-            i.desc	   = f[3];
+            i.desc     = f[3];
             a.fields.push(i);
         });
         if (type)
