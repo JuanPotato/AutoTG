@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from bs4 import BeautifulSoup as Soup, NavigableString
 from enum import Enum
 import requests
@@ -58,7 +59,7 @@ def main():
     print(f'Objec: {len(objs)}')
     print(f'Funct: {len(funs)}')
     print(ret_map)
-    with open('api2.json', 'w') as f:
+    with open('api.json', 'w') as f:
         json.dump(result, f, indent=2)
     return result
 
