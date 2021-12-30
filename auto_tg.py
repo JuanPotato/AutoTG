@@ -42,7 +42,7 @@ def main():
                         ret_map[raw_ret] = adjust if adjust else raw_ret
 
                     ret = ret_map[raw_ret]
-                    funs.append({'name': entry_name, 'description': desc, 'params': entry_attr, 'return': ret})
+                    funs.append({'name': entry_name, 'description': desc, 'fields': entry_attr, 'return': ret})
 
             elif res_type == ScanType.ENUM:
                 enums.append({'name': entry_name, 'variants': res})
@@ -57,6 +57,7 @@ def main():
     print(f'Enums: {len(enums)}')
     print(f'Objec: {len(objs)}')
     print(f'Funct: {len(funs)}')
+    print(ret_map)
     with open('api2.json', 'w') as f:
         json.dump(result, f, indent=2)
     return result
@@ -91,7 +92,6 @@ def get_return_type(desc):
     r = r'(?: On success, (?:the sent )?| An )([^\.]+) is returned\.|(?: On success, returns)([^\.]+)|Returns (?:the |a )?([\w ]+?)(?: on success| object)?\.'
     res = re.search(r, desc, flags=re.I)
 
-    print(res, desc)
     if not res:
         raise Exception('Could not find return type in description')
 
