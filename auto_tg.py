@@ -21,7 +21,36 @@ def main():
     enums = []
     objs = []
     funs = []
-    ret_map = {}
+    ret_map = {
+        'Array of Update': 'Array of Update',
+        'True': 'Boolean',
+        'WebhookInfo': 'WebhookInfo',
+        'basic information about the bot in form of a User': 'User',
+        'Message': 'Message',
+        'MessageId of the sent message': 'MessageId',
+        'array of Messages that were sent': 'Array of Message',
+        'if the edited message is not an inline message, the edited Message is returned, otherwise True': 'Message or Boolean',
+        'if the message is not an inline message, the edited Message is returned, otherwise True': 'Message or Boolean',
+        'UserProfilePhotos': 'UserProfilePhotos',
+        'File': 'File',
+        'new invite link as String': 'String',
+        'new invite link as ChatInviteLink': 'ChatInviteLink',
+        'edited invite link as a ChatInviteLink': 'ChatInviteLink',
+        'revoked invite link as ChatInviteLink': 'ChatInviteLink',
+        'Chat': 'Chat',
+        'Array of ChatMember objects that contains information about all chat administrators except other bots': 'Array of ChatMember',
+        'Int': 'Integer',
+        'ChatMember': 'ChatMember',
+        'Array of BotCommand': 'Array of BotCommand',
+        'MenuButton': 'MenuButton',
+        'ChatAdministratorRights': 'ChatAdministratorRights',
+        'the stopped Poll': 'Poll',
+        'StickerSet': 'StickerSet',
+        'uploaded File': 'File',
+        'SentWebAppMessage': 'SentWebAppMessage',
+        'if the message is not an inline message, the Message is returned, otherwise True': 'Message or Boolean',
+        'Array of GameHighScore': 'Array of GameHighScore'
+    }
 
     for h4 in soup.find_all('h4'):
         table = find_next_table(h4)
