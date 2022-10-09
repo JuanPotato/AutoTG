@@ -379,6 +379,12 @@
           "description": "True, if privacy settings of the other party in the private chat allows to use tg://user?id=<user_id> links only in chats with the user. Returned only in getChat."
         },
         {
+          "field": "has_restricted_voice_and_video_messages",
+          "type": "True",
+          "required": false,
+          "description": "True, if the privacy settings of the other party restrict sending voice and video note messages in the private chat. Returned only in getChat."
+        },
+        {
           "field": "join_to_send_messages",
           "type": "True",
           "required": false,
@@ -838,7 +844,7 @@
           "field": "type",
           "type": "String",
           "required": true,
-          "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag), \u201ccashtag\u201d ($USD), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames)"
+          "description": "Type of the entity. Currently, can be \u201cmention\u201d (@username), \u201chashtag\u201d (#hashtag), \u201ccashtag\u201d ($USD), \u201cbot_command\u201d (/start@jobs_bot), \u201curl\u201d (https://telegram.org), \u201cemail\u201d (do-not-reply@telegram.org), \u201cphone_number\u201d (+1-212-555-0123), \u201cbold\u201d (bold text), \u201citalic\u201d (italic text), \u201cunderline\u201d (underlined text), \u201cstrikethrough\u201d (strikethrough text), \u201cspoiler\u201d (spoiler message), \u201ccode\u201d (monowidth string), \u201cpre\u201d (monowidth block), \u201ctext_link\u201d (for clickable text URLs), \u201ctext_mention\u201d (for users without usernames), \u201ccustom_emoji\u201d (for inline custom emoji stickers)"
         },
         {
           "field": "offset",
@@ -869,6 +875,12 @@
           "type": "String",
           "required": false,
           "description": "For \u201cpre\u201d only, the programming language of the entity text"
+        },
+        {
+          "field": "custom_emoji_id",
+          "type": "String",
+          "required": false,
+          "description": "For \u201ccustom_emoji\u201d only, unique identifier of the custom emoji. Use getCustomEmojiStickers to get full information about the sticker"
         }
       ]
     },
@@ -2775,7 +2787,7 @@
           "field": "supports_streaming",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the uploaded video is suitable for streaming"
+          "description": "Pass True if the uploaded video is suitable for streaming"
         }
       ]
     },
@@ -2964,6 +2976,12 @@
           "description": "Unique identifier for this file, which is supposed to be the same over time and for different bots. Can't be used to download or reuse the file."
         },
         {
+          "field": "type",
+          "type": "String",
+          "required": true,
+          "description": "Type of the sticker, currently one of \u201cregular\u201d, \u201cmask\u201d, \u201ccustom_emoji\u201d. The type of the sticker is independent from its format, which is determined by the fields is_animated and is_video."
+        },
+        {
           "field": "width",
           "type": "Integer",
           "required": true,
@@ -3009,13 +3027,19 @@
           "field": "premium_animation",
           "type": "File",
           "required": false,
-          "description": "Premium animation for the sticker, if the sticker is premium"
+          "description": "For premium regular stickers, premium animation for the sticker"
         },
         {
           "field": "mask_position",
           "type": "MaskPosition",
           "required": false,
           "description": "For mask stickers, the position where the mask should be placed"
+        },
+        {
+          "field": "custom_emoji_id",
+          "type": "String",
+          "required": false,
+          "description": "For custom emoji stickers, unique identifier of the custom emoji"
         },
         {
           "field": "file_size",
@@ -3042,6 +3066,12 @@
           "description": "Sticker set title"
         },
         {
+          "field": "sticker_type",
+          "type": "String",
+          "required": true,
+          "description": "Type of stickers in the set, currently one of \u201cregular\u201d, \u201cmask\u201d, \u201ccustom_emoji\u201d"
+        },
+        {
           "field": "is_animated",
           "type": "Boolean",
           "required": true,
@@ -3052,12 +3082,6 @@
           "type": "Boolean",
           "required": true,
           "description": "True, if the sticker set contains video stickers"
-        },
-        {
-          "field": "contains_masks",
-          "type": "Boolean",
-          "required": true,
-          "description": "True, if the sticker set contains masks"
         },
         {
           "field": "stickers",
@@ -3189,7 +3213,7 @@
           "field": "hide_url",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you don't want the URL to be shown in the message"
+          "description": "Pass True if you don't want the URL to be shown in the message"
         },
         {
           "field": "description",
@@ -4803,43 +4827,43 @@
           "field": "need_name",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's full name to complete the order"
+          "description": "Pass True if you require the user's full name to complete the order"
         },
         {
           "field": "need_phone_number",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's phone number to complete the order"
+          "description": "Pass True if you require the user's phone number to complete the order"
         },
         {
           "field": "need_email",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's email address to complete the order"
+          "description": "Pass True if you require the user's email address to complete the order"
         },
         {
           "field": "need_shipping_address",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's shipping address to complete the order"
+          "description": "Pass True if you require the user's shipping address to complete the order"
         },
         {
           "field": "send_phone_number_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's phone number should be sent to provider"
+          "description": "Pass True if the user's phone number should be sent to provider"
         },
         {
           "field": "send_email_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's email address should be sent to provider"
+          "description": "Pass True if the user's email address should be sent to provider"
         },
         {
           "field": "is_flexible",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the final price depends on the shipping method"
+          "description": "Pass True if the final price depends on the shipping method"
         }
       ]
     },
@@ -5656,7 +5680,7 @@
   "functions": [
     {
       "name": "getUpdates",
-      "description": "Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.",
+      "description": "Use this method to receive incoming updates using long polling (wiki). Returns an Array of Update objects.",
       "fields": [
         {
           "field": "offset",
@@ -5827,7 +5851,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -5877,7 +5901,7 @@
     },
     {
       "name": "copyMessage",
-      "description": "Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.",
+      "description": "Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot. The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.",
       "fields": [
         {
           "field": "chat_id",
@@ -5937,7 +5961,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6004,7 +6028,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6095,7 +6119,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6174,7 +6198,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6247,7 +6271,7 @@
           "field": "supports_streaming",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the uploaded video is suitable for streaming"
+          "description": "Pass True if the uploaded video is suitable for streaming"
         },
         {
           "field": "disable_notification",
@@ -6271,7 +6295,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6362,7 +6386,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6435,7 +6459,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6502,7 +6526,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6551,7 +6575,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         }
       ],
       "return": "Array of Message"
@@ -6624,7 +6648,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6807,7 +6831,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -6874,13 +6898,13 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
           "type": "InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply",
           "required": false,
-          "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove keyboard or to force a reply from the user."
+          "description": "Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user."
         }
       ],
       "return": "Message"
@@ -6965,7 +6989,7 @@
           "field": "is_closed",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the poll needs to be immediately closed. This can be useful for poll preview."
+          "description": "Pass True if the poll needs to be immediately closed. This can be useful for poll preview."
         },
         {
           "field": "disable_notification",
@@ -6989,7 +7013,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -7038,7 +7062,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -7213,67 +7237,67 @@
           "field": "is_anonymous",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator's presence in the chat is hidden"
+          "description": "Pass True if the administrator's presence in the chat is hidden"
         },
         {
           "field": "can_manage_chat",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege"
+          "description": "Pass True if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege"
         },
         {
           "field": "can_post_messages",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can create channel posts, channels only"
+          "description": "Pass True if the administrator can create channel posts, channels only"
         },
         {
           "field": "can_edit_messages",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can edit messages of other users and can pin messages, channels only"
+          "description": "Pass True if the administrator can edit messages of other users and can pin messages, channels only"
         },
         {
           "field": "can_delete_messages",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can delete messages of other users"
+          "description": "Pass True if the administrator can delete messages of other users"
         },
         {
           "field": "can_manage_video_chats",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can manage video chats"
+          "description": "Pass True if the administrator can manage video chats"
         },
         {
           "field": "can_restrict_members",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can restrict, ban or unban chat members"
+          "description": "Pass True if the administrator can restrict, ban or unban chat members"
         },
         {
           "field": "can_promote_members",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him)"
+          "description": "Pass True if the administrator can add new administrators with a subset of their own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by him)"
         },
         {
           "field": "can_change_info",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can change chat title, photo and other settings"
+          "description": "Pass True if the administrator can change chat title, photo and other settings"
         },
         {
           "field": "can_invite_users",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can invite new users to the chat"
+          "description": "Pass True if the administrator can invite new users to the chat"
         },
         {
           "field": "can_pin_messages",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the administrator can pin messages, supergroups only"
+          "description": "Pass True if the administrator can pin messages, supergroups only"
         }
       ],
       "return": "Boolean"
@@ -7600,7 +7624,7 @@
           "field": "disable_notification",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats."
+          "description": "Pass True if it is not necessary to send a notification to all chat members about the new pinned message. Notifications are always disabled in channels and private chats."
         }
       ],
       "return": "Boolean"
@@ -7665,7 +7689,7 @@
     },
     {
       "name": "getChatAdministrators",
-      "description": "Use this method to get a list of administrators in a chat. On success, returns an Array of ChatMember objects that contains information about all chat administrators except other bots. If the chat is a group or a supergroup and no administrators were appointed, only the creator will be returned.",
+      "description": "Use this method to get a list of administrators in a chat, which aren't bots. Returns an Array of ChatMember objects.",
       "fields": [
         {
           "field": "chat_id",
@@ -7779,7 +7803,7 @@
     },
     {
       "name": "setMyCommands",
-      "description": "Use this method to change the list of the bot's commands. See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.",
+      "description": "Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.",
       "fields": [
         {
           "field": "commands",
@@ -7823,7 +7847,7 @@
     },
     {
       "name": "getMyCommands",
-      "description": "Use this method to get the current list of the bot's commands for the given scope and user language. Returns Array of BotCommand on success. If commands aren't set, an empty list is returned.",
+      "description": "Use this method to get the current list of the bot's commands for the given scope and user language. Returns an Array of BotCommand objects. If commands aren't set, an empty list is returned.",
       "fields": [
         {
           "field": "scope",
@@ -8158,7 +8182,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -8181,6 +8205,19 @@
         }
       ],
       "return": "StickerSet"
+    },
+    {
+      "name": "getCustomEmojiStickers",
+      "description": "Use this method to get information about custom emoji stickers by their identifiers. Returns an Array of Sticker objects.",
+      "fields": [
+        {
+          "field": "custom_emoji_ids",
+          "type": "Array of String",
+          "required": true,
+          "description": "List of custom emoji identifiers. At most 200 custom emoji identifiers can be specified."
+        }
+      ],
+      "return": "Array of Sticker"
     },
     {
       "name": "uploadStickerFile",
@@ -8242,16 +8279,16 @@
           "description": "WEBM video with the sticker, uploaded using multipart/form-data. See https://core.telegram.org/stickers#video-sticker-requirements for technical requirements"
         },
         {
+          "field": "sticker_type",
+          "type": "String",
+          "required": false,
+          "description": "Type of stickers in the set, pass \u201cregular\u201d or \u201cmask\u201d. Custom emoji sticker sets can't be created via the Bot API at the moment. By default, a regular sticker set is created."
+        },
+        {
           "field": "emojis",
           "type": "String",
           "required": true,
           "description": "One or more emoji corresponding to the sticker"
-        },
-        {
-          "field": "contains_masks",
-          "type": "Boolean",
-          "required": false,
-          "description": "Pass True, if a set of mask stickers should be created"
         },
         {
           "field": "mask_position",
@@ -8394,7 +8431,7 @@
           "field": "is_personal",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query"
+          "description": "Pass True if results may be cached on the server side only for the user that sent the query. By default, results may be returned to any user who sends the same query"
         },
         {
           "field": "next_offset",
@@ -8534,43 +8571,43 @@
           "field": "need_name",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's full name to complete the order"
+          "description": "Pass True if you require the user's full name to complete the order"
         },
         {
           "field": "need_phone_number",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's phone number to complete the order"
+          "description": "Pass True if you require the user's phone number to complete the order"
         },
         {
           "field": "need_email",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's email address to complete the order"
+          "description": "Pass True if you require the user's email address to complete the order"
         },
         {
           "field": "need_shipping_address",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's shipping address to complete the order"
+          "description": "Pass True if you require the user's shipping address to complete the order"
         },
         {
           "field": "send_phone_number_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's phone number should be sent to provider"
+          "description": "Pass True if the user's phone number should be sent to provider"
         },
         {
           "field": "send_email_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's email address should be sent to provider"
+          "description": "Pass True if the user's email address should be sent to provider"
         },
         {
           "field": "is_flexible",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the final price depends on the shipping method"
+          "description": "Pass True if the final price depends on the shipping method"
         },
         {
           "field": "disable_notification",
@@ -8594,7 +8631,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -8691,43 +8728,43 @@
           "field": "need_name",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's full name to complete the order"
+          "description": "Pass True if you require the user's full name to complete the order"
         },
         {
           "field": "need_phone_number",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's phone number to complete the order"
+          "description": "Pass True if you require the user's phone number to complete the order"
         },
         {
           "field": "need_email",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's email address to complete the order"
+          "description": "Pass True if you require the user's email address to complete the order"
         },
         {
           "field": "need_shipping_address",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if you require the user's shipping address to complete the order"
+          "description": "Pass True if you require the user's shipping address to complete the order"
         },
         {
           "field": "send_phone_number_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's phone number should be sent to the provider"
+          "description": "Pass True if the user's phone number should be sent to the provider"
         },
         {
           "field": "send_email_to_provider",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the user's email address should be sent to the provider"
+          "description": "Pass True if the user's email address should be sent to the provider"
         },
         {
           "field": "is_flexible",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the final price depends on the shipping method"
+          "description": "Pass True if the final price depends on the shipping method"
         }
       ],
       "return": "String"
@@ -8746,7 +8783,7 @@
           "field": "ok",
           "type": "Boolean",
           "required": true,
-          "description": "Specify True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible)"
+          "description": "Pass True if delivery to the specified address is possible and False if there are any problems (for example, if delivery to the specified address is not possible)"
         },
         {
           "field": "shipping_options",
@@ -8845,7 +8882,7 @@
           "field": "allow_sending_without_reply",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the message should be sent even if the specified replied-to message is not found"
+          "description": "Pass True if the message should be sent even if the specified replied-to message is not found"
         },
         {
           "field": "reply_markup",
@@ -8876,13 +8913,13 @@
           "field": "force",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters"
+          "description": "Pass True if the high score is allowed to decrease. This can be useful when fixing mistakes or banning cheaters"
         },
         {
           "field": "disable_edit_message",
           "type": "Boolean",
           "required": false,
-          "description": "Pass True, if the game message should not be automatically edited to include the current scoreboard"
+          "description": "Pass True if the game message should not be automatically edited to include the current scoreboard"
         },
         {
           "field": "chat_id",
@@ -8907,7 +8944,7 @@
     },
     {
       "name": "getGameHighScores",
-      "description": "Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. On success, returns an Array of GameHighScore objects.",
+      "description": "Use this method to get data for high score tables. Will return the score of the specified user and several of their neighbors in a game. Returns an Array of GameHighScore objects.",
       "fields": [
         {
           "field": "user_id",
