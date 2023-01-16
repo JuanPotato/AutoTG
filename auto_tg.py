@@ -49,7 +49,11 @@ def main():
         'uploaded File': 'File',
         'SentWebAppMessage': 'SentWebAppMessage',
         'if the message is not an inline message, the Message is returned, otherwise True': 'Message or Boolean',
-        'Array of GameHighScore': 'Array of GameHighScore'
+        'Array of GameHighScore': 'Array of GameHighScore',
+        'Array of ChatMember': 'Array of ChatMember',
+        'Array of Sticker': 'Array of Sticker',
+        'information about the created topic as a ForumTopic': 'ForumTopic',
+        'created invoice link as String': 'String',
     }
 
     for h4 in soup.find_all('h4'):
